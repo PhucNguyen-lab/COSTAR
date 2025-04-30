@@ -13,14 +13,13 @@
         const tone = document.getElementById("tone").value;
         const audience = document.getElementById("audience").value;
         const response = document.getElementById("response").value;
-
         const output = `
-Context: ${context}
-Objective: ${objective}
-Style: ${style}
-Tone: ${tone}
-Audience: ${audience}
-Response: ${response}
+          Context: ${context}
+          Objective: ${objective}
+          Style: ${style}
+          Tone: ${tone}
+          Audience: ${audience}
+          Response: ${response}
       `.trim();
 
         document.getElementById("output").innerText = output;
@@ -39,108 +38,131 @@ Response: ${response}
       }
     </script>
   </head>
-  <body class="bg-gray-50 min-h-screen flex items-center justify-center p-6">
-    <div
-      class="bg-white p-8 rounded-xl shadow-md w-full max-w-4xl flex flex-col-reverse lg:flex-row space-y-8 lg:space-y-0 lg:space-x-12"
-    >
-      <!-- Form Section -->
-      <div class="w-full lg:w-1/2">
-        <h1 class="text-4xl font-semibold text-gray-800 mb-8 text-center">COSTAR Framework</h1>
-        <form class="space-y-6" oninput="updateOutput()">
-          <div>
-            <label for="context" class="block text-sm font-medium text-gray-600">Context</label>
-            <textarea
-              id="context"
-              name="context"
-              rows="2"
-              class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-400 p-4"
-              placeholder="What is the context?"
-              required
-            ></textarea>
-          </div>
-          <div>
-            <label for="objective" class="block text-sm font-medium text-gray-600">Objective</label>
-            <textarea
-              id="objective"
-              name="objective"
-              rows="2"
-              class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-400 p-4"
-              placeholder="What is the objective?"
-              required
-            ></textarea>
-          </div>
-          <div>
-            <label for="style" class="block text-sm font-medium text-gray-600">Style</label>
-            <textarea
-              id="style"
-              name="style"
-              rows="2"
-              class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-400 p-4"
-              placeholder="What is the style?"
-              required
-            ></textarea>
-          </div>
-          <div>
-            <label for="tone" class="block text-sm font-medium text-gray-600">Tone</label>
-            <input
-              id="tone"
-              name="tone"
-              list="toneOptions"
-              class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-400 p-4"
-              placeholder="Select or type a tone"
-              required
-            />
-            <datalist id="toneOptions">
-              <option value="Formal"></option>
-              <option value="Informal"></option>
-              <option value="Persuasive"></option>
-              <option value="Descriptive"></option>
-              <option value="Narrative"></option>
-              <option value="Empathetic"></option>
-              <option value="Technical"></option>
-              <option value="Humorous"></option>
-            </datalist>
-          </div>
-          <div>
-            <label for="audience" class="block text-sm font-medium text-gray-600">Audience</label>
-            <textarea
-              id="audience"
-              name="audience"
-              rows="2"
-              class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-400 p-4"
-              placeholder="Who is the audience?"
-              required
-            ></textarea>
-          </div>
-          <div>
-            <label for="response" class="block text-sm font-medium text-gray-600">Response</label>
-            <textarea
-              id="response"
-              name="response"
-              rows="2"
-              class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-400 p-4"
-              placeholder="What is the response?"
-              required
-            ></textarea>
-          </div>
-        </form>
-      </div>
+  <body class="bg-gray-50 min-h-screen flex flex-col justify-center items-center content-center p-6">
+    <div class="bg-gray-50">
+      <div
+        class="bg-white p-8 rounded-xl shadow-md w-full flex flex-col-reverse lg:flex-row space-y-8 lg:space-y-0 lg:space-x-12"
+      >
+        <!-- Form Section -->
+        <div class="w-full lg:w-1/2">
+          <h1 class="text-4xl font-semibold text-gray-800 mb-8 text-center">COSTAR Framework</h1>
+          <form class="space-y-6" oninput="updateOutput()">
+            <div>
+              <label for="context" class="block text-sm font-medium text-gray-600">Context</label>
+              <textarea
+                id="context"
+                name="context"
+                rows="3"
+                class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-400 p-4"
+                placeholder="Provide background information on the task."
+                required
+              ></textarea>
+            </div>
+            <div>
+              <label for="objective" class="block text-sm font-medium text-gray-600">Objective</label>
+              <textarea
+                id="objective"
+                name="objective"
+                rows="3"
+                class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-400 p-4"
+                placeholder="Define what the task is that you want the LLM to perform"
+                required
+              ></textarea>
+            </div>
+            <div>
+              <label for="style" class="block text-sm font-medium text-gray-600">Style</label>
+              <textarea
+                id="style"
+                name="style"
+                rows="2"
+                class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-400 p-4"
+                placeholder="Specify the writing style you want the LLM to use. Example: a profession, an expert, CEO, etc."
+                required
+              ></textarea>
+            </div>
+            <div>
+              <label for="tone" class="block text-sm font-medium text-gray-600">Tone</label>
+              <input
+                id="tone"
+                name="tone"
+                list="toneOptions"
+                class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-400 p-4"
+                placeholder="Set the attitude of the response"
+                required
+              />
+              <datalist id="toneOptions">
+                <option value="Formal"></option>
+                <option value="Informal"></option>
+                <option value="Persuasive"></option>
+                <option value="Descriptive"></option>
+                <option value="Narrative"></option>
+                <option value="Empathetic"></option>
+                <option value="Technical"></option>
+                <option value="Humorous"></option>
+              </datalist>
+            </div>
+            <div>
+              <label for="audience" class="block text-sm font-medium text-gray-600">Audience</label>
+              <textarea
+                id="audience"
+                name="audience"
+                rows="2"
+                class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-400 p-4"
+                placeholder="Identify who the response is intended for"
+                required
+              ></textarea>
+            </div>
+            <div>
+              <label for="response" class="block text-sm font-medium text-gray-600">Response</label>
+              <textarea
+                id="response"
+                name="response"
+                rows="2"
+                class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-400 p-4"
+                placeholder="Provide the response format"
+                required
+              ></textarea>
+            </div>
+          </form>
+        </div>
 
-      <!-- Output Section -->
-      <div class="w-full lg:w-1/2 bg-gray-100 p-6 rounded-lg shadow-inner sticky top-0">
-        <!-- Sticky top -->
-        <div class="sticky top-10">
-          <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Generated Output</h2>
-          <pre id="output" class="bg-white p-6 rounded-lg border border-gray-300 text-sm whitespace-pre-wrap"></pre>
-          <button
-            onclick="copyToClipboard()"
-            class="mt-6 w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-          >
-            Copy to Clipboard
-          </button>
-          <p id="copyMessage" class="text-green-600 text-sm mt-4 hidden text-center">Copied to clipboard!</p>
+        <!-- Output Section -->
+        <div class="w-full lg:w-1/2 bg-gray-100 p-6 rounded-lg shadow-inner sticky top-0">
+          <div class="sticky top-10">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Generated Output</h2>
+            <pre id="output" class="bg-white p-6 rounded-lg border border-gray-300 text-sm whitespace-pre-wrap"></pre>
+            <button
+              onclick="copyToClipboard()"
+              class="mt-6 w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            >
+              Copy to Clipboard
+            </button>
+            <p id="copyMessage" class="text-green-600 text-sm mt-4 hidden text-center">Copied to clipboard!</p>
+            <div class="mt-6 text-center">
+              <a href="https://chatgpt.com/" target="_blank" class="text-blue-600 hover:underline">Go to ChatGPT</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- Footer Section -->
+    <footer class="mt-12 text-center text-sm text-gray-500">
+      <p>COSTAR is a handy template for structuring prompts</p>
+      <p>
+        It considers all the key aspects that influence the effectiveness and relevance of an LLM’s response, leading to
+        more optimal responses
+      </p>
+      <p>
+        Reference:
+        <a
+          href="https://towardsdatascience.com/how-i-won-singapores-gpt-4-prompt-engineering-competition-34c195a93d41/?sk=6dcb54635c44afb6202c6e6d1f22c4ce"
+          target="_blank"
+          class="text-blue-600 hover:underline"
+        >
+          Article Link
+        </a>
+      </p>
+    </footer>
   </body>
 </html>

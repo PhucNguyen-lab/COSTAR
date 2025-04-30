@@ -32,7 +32,7 @@ if __name__ == "__main__":
   tone = st.selectbox("Tone", ["Formal", "Informal", "Persuasive", "Descriptive", "Narrative", "Empathetic", "Technical", "Conversational", "Humorous", "Serious", "Other"])
   if tone == "Other":
       # If 'Other' is selected, show a text input for the user to specify the tone
-    other_tone = st.text_input("Other Tone", "If you selected 'Other', please specify the tone you want the LLM to use")
+    other_tone = st.text_input("Other Tone", "sIf you selected 'Other', please specify the tone you want the LLM to use")
     if other_tone:
       tone = other_tone
 
