@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COSTAR Framework Prompt Builder</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script>
+      function updateOutput() {
+        const context = document.getElementById("context").value;
+        const objective = document.getElementById("objective").value;
+        const style = document.getElementById("style").value;
+        const tone = document.getElementById("tone").value;
+        const audience = document.getElementById("audience").value;
+        const response = document.getElementById("response").value;
+
+        const output = `
+Context: ${context}
+Objective: ${objective}
+Style: ${style}
+Tone: ${tone}
+Audience: ${audience}
+Response: ${response}
+      `.trim();
+
+        document.getElementById("output").innerText = output;
+      }
+
+      function copyToClipboard() {
+        const output = document.getElementById("output").innerText;
+        navigator.clipboard.writeText(output).then(() => {
+          const message = document.getElementById("copyMessage");
+          message.innerText = "Copied to clipboard!";
+          message.classList.remove("hidden");
+          setTimeout(() => {
+            message.classList.add("hidden");
+          }, 3000); // Hide the message after 3 seconds
+        });
+      }
+    </script>
+  </head>
+  <body class="bg-gray-50 min-h-screen flex items-center justify-center p-6">
+    <div
+      class="bg-white p-8 rounded-xl shadow-md w-full max-w-4xl flex flex-col-reverse lg:flex-row space-y-8 lg:space-y-0 lg:space-x-12"
+    >
+      <!-- Form Section -->
+      <div class="w-full lg:w-1/2">
+        <h1 class="text-4xl font-semibold text-gray-800 mb-8 text-center">COSTAR Framework</h1>
+        <form class="space-y-6" oninput="updateOutput()">
+          <div>
+            <label for="context" class="block text-sm font-medium text-gray-600">Context</label>
+            <textarea
+              id="context"
+              name="context"
+              rows="2"
+              class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-400 p-4"
+              placeholder="What is the context?"
+              required
+            ></textarea>
+          </div>
+          <div>
+            <label for="objective" class="block text-sm font-medium text-gray-600">Objective</label>
+            <textarea
+              id="objective"
+              name="objective"
+              rows="2"
+              class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-400 p-4"
+              placeholder="What is the objective?"
+              required
+            ></textarea>
+          </div>
+          <div>
+            <label for="style" class="block text-sm font-medium text-gray-600">Style</label>
+            <textarea
+              id="style"
+              name="style"
+              rows="2"
+              class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-400 p-4"
+              placeholder="What is the style?"
+              required
+            ></textarea>
+          </div>
+          <div>
+            <label for="tone" class="block text-sm font-medium text-gray-600">Tone</label>
+            <input
+              id="tone"
+              name="tone"
+              list="toneOptions"
+              class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-400 p-4"
+              placeholder="Select or type a tone"
+              required
+            />
+            <datalist id="toneOptions">
+              <option value="Formal"></option>
+              <option value="Informal"></option>
+              <option value="Persuasive"></option>
+              <option value="Descriptive"></option>
+              <option value="Narrative"></option>
+              <option value="Empathetic"></option>
+              <option value="Technical"></option>
+              <option value="Humorous"></option>
+            </datalist>
+          </div>
+          <div>
+            <label for="audience" class="block text-sm font-medium text-gray-600">Audience</label>
+            <textarea
+              id="audience"
+              name="audience"
+              rows="2"
+              class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-400 p-4"
+              placeholder="Who is the audience?"
+              required
+            ></textarea>
+          </div>
+          <div>
+            <label for="response" class="block text-sm font-medium text-gray-600">Response</label>
+            <textarea
+              id="response"
+              name="response"
+              rows="2"
+              class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-400 p-4"
+              placeholder="What is the response?"
+              required
+            ></textarea>
+          </div>
+        </form>
+      </div>
+
+      <!-- Output Section -->
+      <div class="w-full lg:w-1/2 bg-gray-100 p-6 rounded-lg shadow-inner sticky top-0">
+        <!-- Sticky top -->
+        <div class="sticky top-10">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Generated Output</h2>
+          <pre id="output" class="bg-white p-6 rounded-lg border border-gray-300 text-sm whitespace-pre-wrap"></pre>
+          <button
+            onclick="copyToClipboard()"
+            class="mt-6 w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          >
+            Copy to Clipboard
+          </button>
+          <p id="copyMessage" class="text-green-600 text-sm mt-4 hidden text-center">Copied to clipboard!</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -38,3 +38,20 @@ if __name__ == "__main__":
 
   audience = st.text_area("Audience", "Identify who the response is intended for")
   response = st.text_area("Response", "Provide the response format")
+
+
+  #Show the final prompt on the right side of the screen
+
+  st.sidebar.markdown("## Final Prompt")
+  st.sidebar.write("This is the final prompt that will be sent to the LLM")
+  final_prompt = f"""
+  Context: {context}
+  Objective: {objective}
+  Style: {style}
+  Tone: {tone}
+  Audience: {audience}
+  Response: {response}
+  """
+
+  #Create a button to copy the final prompt to clipboard
+  st.sidebar.code(final_prompt, language='python')
